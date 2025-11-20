@@ -18,7 +18,7 @@ export const metadata = {
     template: "%s | GlowFit Women's Gym",
   },
   description:
-    "Empowering women to achieve their strongest, healthiest selves through personalized fitness programs, strength training, yoga, and dance fitness. Join our supportive community of women-focused wellness.",
+    "Discover GlowFit Women's Gym, a supportive fitness community designed exclusively for women. Join our personalized fitness programs including strength training, yoga, dance fitness, and more. Empowering women to achieve their strongest, healthiest selves.",
   keywords: [
     "women's gym",
     "female fitness",
@@ -26,7 +26,10 @@ export const metadata = {
     "yoga for women",
     "dance fitness",
     "women's health",
-    "fitness community"
+    "fitness community",
+    "personalized workouts",
+    "empowerment through fitness",
+    "GlowFit Gym"
   ],
   authors: [{ name: "GlowFit Women's Gym" }],
   creator: "GlowFit Women's Gym",
@@ -41,14 +44,24 @@ export const metadata = {
     url: "https://glowfit-nextjs.vercel.app/",
     title: "GlowFit Women's Gym | Empowering Women's Fitness",
     description:
-      "Empowering women to achieve their strongest, healthiest selves through personalized fitness programs.",
+      "Discover GlowFit Women's Gym, a supportive fitness community designed exclusively for women. Join our personalized fitness programs including strength training, yoga, dance fitness, and more.",
     siteName: "GlowFit Women's Gym",
+    images: [
+      {
+        url: "/assets/logo/Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "GlowFit Women's Gym - Empowering Women's Fitness",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "GlowFit Women's Gym | Empowering Women's Fitness",
     description:
-      "Empowering women to achieve their strongest, healthiest selves through personalized fitness programs.",
+      "Discover GlowFit Women's Gym, a supportive fitness community designed exclusively for women. Join our personalized fitness programs including strength training, yoga, dance fitness, and more.",
+    images: ["/assets/logo/Logo.png"],
+    creator: "@GlowFitGym",
   },
   viewport: {
     width: "device-width",
@@ -79,6 +92,7 @@ export default function RootLayout({ children }) {
                 "postalCode": "679572",
                 "addressCountry": "IN"
               },
+              "image": "https://glowfit-nextjs.vercel.app/assets/logo/Logo.png",
               "openingHours": [
                 "Mo-Fr 06:00-22:00",
                 "Sa-Su 08:00-20:00"
