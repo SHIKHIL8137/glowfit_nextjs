@@ -1,82 +1,58 @@
 "use client";
 
 import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SmoothScrollProvider = ({ children }) => {
+export default function SmoothScrollProvider({ children }) {
   useEffect(() => {
-    // Configure ScrollTrigger with optimized settings
-    ScrollTrigger.config({
-      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+    const lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+      smoothTouch: false,
+      touchMultiplier: 1.5,
     });
 
-    const setupSmoothScrolling = () => {
-      // Kill existing triggers to prevent duplicates
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-      const root = document.documentElement;
-      root.style.setProperty("--scroll-behavior", "smooth");
+    lenis.on("scroll", () => {
+      ScrollTrigger.update();
+    });
 
-      document.body.classList.add("smooth-scroll");
-
-      const style = document.createElement("style");
-      style.textContent = `
-        .smooth-scroll {
-          scroll-behavior: smooth;
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value) {
+        if (value !== undefined) {
+          lenis.scrollTo(value, { immediate: true });
         }
-        
-        @media (prefers-reduced-motion: no-preference) {
-          html {
-            scroll-behavior: smooth;
-          }
-        }
-      `;
-      document.head.appendChild(style);
+        return lenis.scroll;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+    });
 
-      // Return cleanup function
-      return () => {
-        // Thoroughly clean up ScrollTrigger instances
-        ScrollTrigger.getAll().forEach((trigger) => {
-          trigger.kill();
-        });
-        
-        // Clear all ScrollTrigger data
-        ScrollTrigger.clearMatchMedia();
-        
-        document.body.classList.remove("smooth-scroll");
+    ScrollTrigger.addEventListener("refresh", () => {
+    });
 
-        if (style.parentNode) {
-          style.parentNode.removeChild(style);
-        }
-      };
-    };
+    ScrollTrigger.refresh();
 
-    const cleanup = setupSmoothScrolling();
-
-    // Refresh ScrollTrigger on load and resize for better performance
-    const handleLoad = () => {
-      ScrollTrigger.refresh();
-    };
-    
-    const handleResize = () => {
-      ScrollTrigger.refresh();
-    };
-
-    window.addEventListener("load", handleLoad);
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listeners
     return () => {
-      window.removeEventListener("load", handleLoad);
-      window.removeEventListener("resize", handleResize);
-      cleanup();
+      ScrollTrigger.killAll();
+      lenis.destroy();
     };
   }, []);
 
   return <>{children}</>;
-};
-
-export default SmoothScrollProvider;
+}

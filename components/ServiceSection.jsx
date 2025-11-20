@@ -103,7 +103,7 @@ const ServiceCard = React.memo(({ service, index }) => {
           "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)",
         transition: { duration: 0.3 },
       }}
-      className="bg-[#2C1A0D] rounded-lg shadow-xl overflow-hidden transform transition-all duration-300 border-t-4 border-[#C01818] hover:border-[#FFD36E]"
+      className="bg-[#2C1A0D] rounded-lg shadow-xl overflow-hidden transform transition-all duration-300 border-t-4 border-[#C01818]"
     >
       <div className="h-48 overflow-hidden">
         <LazyImage

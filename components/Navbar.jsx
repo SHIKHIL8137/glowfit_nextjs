@@ -43,8 +43,8 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
-      <div className="container mx-auto px-4 md:px-20">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 w-full">
           <motion.div
             className="flex-shrink-0"
             whileHover={{ scale: 1.05 }}
@@ -54,12 +54,12 @@ const Navbar = () => {
           </motion.div>
 
           <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-6 sm:space-x-8">
               {navLinks.map((link, index) => (
                 <motion.button
                   key={link.name}
                   onClick={() => handleScrollTo(link.href)}
-                  className="text-white hover:text-orange-700 px-1 py-2 text-sm font-medium border-b-2 border-transparent hover:border-orange-700 transition-colors duration-300"
+                  className="text-white hover:text-orange-700 px-1 py-2 text-sm font-medium border-b-2 border-transparent hover:border-orange-700 transition-colors duration-300 whitespace-nowrap"
                   whileHover={{ y: -2 }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <motion.button
               onClick={() => handleScrollTo("#contact")}
-              className="bg-[#C01818] hover:bg-[#8A0F0F] text-white font-bold py-2 px-6 rounded-full text-sm transition duration-300 ease-in-out"
+              className="bg-[#C01818] hover:bg-[#8A0F0F] text-white font-bold py-2 px-4 sm:px-6 rounded-full text-sm transition duration-300 ease-in-out whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -91,7 +91,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-300 focus:outline-none"
+              className="inline-flex items-center justify-center p-1.5 rounded-md text-white hover:text-gray-300 focus:outline-none"
               whileTap={{ scale: 0.9 }}
             >
               <svg
@@ -142,7 +142,7 @@ const Navbar = () => {
       )}
 
       <motion.div
-        className="fixed top-0 left-0 h-full w-full bg-black shadow-lg z-50 md:hidden"
+        className="fixed top-0 left-0 h-full w-full bg-black shadow-lg z-50 md:hidden overflow-hidden"
         initial={{ x: "-100%" }}
         animate={{ x: isMenuOpen ? 0 : "-100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -178,7 +178,7 @@ const Navbar = () => {
                   handleScrollTo(link.href);
                   setIsMenuOpen(false);
                 }}
-                className="text-white hover:text-orange-700 block px-3 py-4 text-center text-xl font-medium w-full max-w-md"
+                className="text-white hover:text-orange-700 block px-3 py-4 text-center text-xl font-medium w-full"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}

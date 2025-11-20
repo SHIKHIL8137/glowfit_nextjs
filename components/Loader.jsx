@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const GymLoadingScreen = () => {
+const GymLoadingScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -10,7 +10,7 @@ const GymLoadingScreen = () => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setIsComplete(true), 500);
+          setTimeout(() => setIsComplete(true), 500); // wait before exit animation
           return 100;
         }
         return prev + 2;
@@ -20,18 +20,20 @@ const GymLoadingScreen = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // 🔥 EXIT ANIMATION
   if (isComplete) {
     return (
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed inset-0 bg-black flex items-center justify-center"
+        transition={{ duration: 0.7 }}
+        onAnimationComplete={onFinish} // <-- Call finish ONLY after animations end
+        className="fixed inset-0 bg-black flex items-center justify-center z-[9999]"
       >
         <motion.div
           initial={{ scale: 1 }}
-          animate={{ scale: 1.5, opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          animate={{ scale: 1.8, opacity: 0 }}
+          transition={{ duration: 0.7 }}
           className="text-orange-500 text-6xl font-bold"
         >
           LET'S GO!
@@ -41,7 +43,7 @@ const GymLoadingScreen = () => {
   }
 
   return (
-    <div className="fixed inset-0 bg-black flex flex-col items-center justify-center p-8">
+    <div className="fixed inset-0 bg-black flex flex-col items-center justify-center p-8 z-[9999]">
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
@@ -49,14 +51,8 @@ const GymLoadingScreen = () => {
         className="mb-12"
       >
         <motion.div
-          animate={{ 
-            rotateY: [0, 360],
-          }}
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
+          animate={{ rotateY: [0, 360] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           className="relative"
         >
           <svg width="120" height="120" viewBox="0 0 120 120" className="text-orange-500">
@@ -85,6 +81,7 @@ const GymLoadingScreen = () => {
       >
         Glow<span className="text-orange-400">Fit</span> Women's Gym
       </motion.h1>
+
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -138,18 +135,12 @@ const GymLoadingScreen = () => {
           <motion.div
             key={i}
             className="w-3 h-3 bg-orange-500 rounded-full"
-            animate={{ 
-              scale: [1, 1.5, 1],
-              opacity: [0.5, 1, 0.5]
-            }}
-            transition={{ 
-              duration: 1,
-              repeat: Infinity,
-              delay: i * 0.2
-            }}
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
           />
         ))}
       </motion.div>
+
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: [0.5, 1, 0.5] }}
