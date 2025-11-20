@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 import ServiceSection from "../components/ServiceSection";
 import AboutSection from "../components/AboutSection";
 import ContactSection from "../components/ContactSection";
-import Footer from "../components/Footer";
+import { Footer } from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ClientWrapper from "../components/ClientWrapper";
 

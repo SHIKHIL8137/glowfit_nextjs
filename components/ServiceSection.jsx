@@ -1,39 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import React from "react";
+import { motion } from "framer-motion";
 import LazyImage from "./LazyImage";
 
-gsap.registerPlugin(ScrollTrigger);
-
-export const ServiceSection = () => {
-  const sectionRef = useRef(null);
-  const gridRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray(".service-card");
-
-      gsap.from(cards, {
-        opacity: 0,
-        y: 40,
-        stagger: 0.12,
-        duration: 0.6,
-        ease: "power3.out",
-        clearProps: "transform",
-        force3D: false,
-        scrollTrigger: {
-          trigger: sectionRef.current,  
-          start: "top 80%",            
-          once: true,                   
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert(); // cleanup
-  }, []);
-
+const ServiceSection = () => {
   const services = [
     { name: "Yoga", image: "/assets/cards/yoga.jpg",
       description: "Improve flexibility, balance, and mental well-being through guided yoga sessions designed specifically for women."
@@ -62,23 +33,33 @@ export const ServiceSection = () => {
   ];
 
   return (
-    <section
-      id="services"
-      ref={sectionRef}
+    <section 
+      id="services" 
       className="min-h-screen bg-black py-16 px-4"
+      aria-labelledby="services-heading"
     >
       <div className="container mx-auto max-w-6xl">
         
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white">
+        <h2 
+          id="services-heading"
+          className="text-3xl md:text-4xl font-bold text-center mb-4 text-white"
+        >
           Our <span className="text-orange-700">Services</span>
         </h2>
 
-        <p className="text-gray-300 text-center mb-12 max-w-2xl mx-auto">
-          Discover our range of specialized fitness programs designed exclusively for women
-        </p>
+        <motion.p
+          className="text-gray-300 text-center mb-12 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          Discover our range of specialized fitness programs designed
+          exclusively for women
+        </motion.p>
 
         {/* GRID */}
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <div
               key={index}
@@ -101,7 +82,6 @@ export const ServiceSection = () => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

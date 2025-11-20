@@ -42,6 +42,8 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 w-full">
@@ -70,6 +72,7 @@ const Navbar = () => {
                     stiffness: 400,
                     damping: 10,
                   }}
+                  aria-label={`Go to ${link.name} section`}
                 >
                   {link.name}
                 </motion.button>
@@ -83,6 +86,7 @@ const Navbar = () => {
               className="bg-[#C01818] hover:bg-[#8A0F0F] text-white font-bold py-2 px-4 sm:px-6 rounded-full text-sm transition duration-300 ease-in-out whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label="Join Now"
             >
               Join Now
             </motion.button>
@@ -93,6 +97,8 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-1.5 rounded-md text-white hover:text-gray-300 focus:outline-none"
               whileTap={{ scale: 0.9 }}
+              aria-expanded={isMenuOpen}
+              aria-label="Toggle navigation menu"
             >
               <svg
                 className={`${
@@ -138,6 +144,8 @@ const Navbar = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           onClick={() => setIsMenuOpen(false)}
+          role="dialog"
+          aria-label="Mobile navigation menu"
         />
       )}
 
@@ -146,11 +154,14 @@ const Navbar = () => {
         initial={{ x: "-100%" }}
         animate={{ x: isMenuOpen ? 0 : "-100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        role="dialog"
+        aria-label="Mobile navigation menu"
       >
         <div className="flex justify-end p-4">
           <button
             onClick={() => setIsMenuOpen(false)}
             className="text-white hover:text-red-700 p-2"
+            aria-label="Close menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -183,6 +194,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 whileHover={{ x: 10 }}
+                aria-label={`Go to ${link.name} section`}
               >
                 {link.name}
               </motion.button>
@@ -197,6 +209,7 @@ const Navbar = () => {
                 className="w-full bg-[#C01818] hover:bg-[#8A0F0F] text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Join Now"
               >
                 Join Now
               </motion.button>

@@ -19,15 +19,18 @@ const HeroSection = () => {
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
       }}
+      aria-labelledby="hero-heading"
     >
       <motion.div
         className="absolute inset-0 bg-black"
         animate={{ opacity: 0.6 }}
         transition={{ duration: 0.8 }}
+        role="presentation"
       />
 
       <div className="relative z-10 text-center px-4 py-16 md:py-24 w-full max-w-4xl mx-auto">
         <motion.h1
+          id="hero-heading"
           className="text-4xl md:text-6xl font-bold text-white mb-6"
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.6 }}

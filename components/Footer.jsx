@@ -58,7 +58,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer>
+    <footer aria-label="Site Footer">
       <div className="bg-[#2C1A0D] text-white border-t-2 border-[#C01818]">
         <div className="container mx-auto max-w-6xl py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -85,6 +85,7 @@ export const Footer = () => {
                           backgroundColor: "#C01818",
                           transition: { duration: 0.3 },
                         }}
+                        aria-label={`Follow us on ${social.name}`}
                       >
                         {social.icon}
                       </motion.a>

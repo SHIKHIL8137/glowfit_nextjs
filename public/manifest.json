@@ -1,0 +1,21 @@
+{
+  "name": "GlowFit Women's Gym",
+  "short_name": "GlowFit",
+  "description": "Empowering women to achieve their strongest, healthiest selves through personalized fitness programs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#C01818",
+  "icons": [
+    {
+      "src": "/assets/logo/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logo/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
