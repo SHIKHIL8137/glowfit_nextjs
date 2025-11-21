@@ -96,9 +96,9 @@ const ServiceSection = () => {
         >
           Discover our range of specialized fitness programs designed
           exclusively for women. Learn more about 
-          <a href="https://www.healthline.com/health/fitness-exercise/benefits-of-yoga" target="_blank" rel="noopener noreferrer" className="text-[#FFD36E] hover:underline">yoga benefits</a>, 
-          <a href="https://www.medicalnewstoday.com/articles/323466" target="_blank" rel="noopener noreferrer" className="text-[#FFD36E] hover:underline">strength training for women</a>, and 
-          <a href="https://www.cdc.gov/physicalactivity/basics/pa-health/index.htm" target="_blank" rel="noopener noreferrer" className="text-[#FFD36E] hover:underline">cardiovascular health</a>.
+          <p className="text-[#FFD36E] hover:underline">yoga benefits</p>, 
+          <p className="text-[#FFD36E] hover:underline">strength training for women</p>, and 
+          <p className="text-[#FFD36E] hover:underline">cardiovascular health</p>.
         </motion.p>
 
         <motion.h2 className="sr-only">
