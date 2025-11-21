@@ -1,17 +1,13 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import React, { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 const HeroSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3, once: false });
-
   return (
     <section
       id="home"
-      ref={ref}
       className="relative min-h-screen flex items-center justify-center"
       style={{
         backgroundImage: "url('/assets/bg/hero-bg.webp')",
@@ -32,7 +28,9 @@ const HeroSection = () => {
         <motion.h1
           id="hero-heading"
           className="text-4xl md:text-6xl font-bold text-white mb-6"
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <Typewriter
@@ -48,7 +46,9 @@ const HeroSection = () => {
 
         <motion.p
           className="text-xl md:text-2xl text-white mb-10 max-w-2xl mx-auto"
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
           Designed exclusively for women to build confidence, strength, and community
