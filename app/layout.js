@@ -17,6 +17,7 @@ export const metadata = {
     default: "GlowFit Women's Gym | Empowering Women's Fitness",
     template: "%s | GlowFit Women's Gym",
   },
+  
   description:
     "Empowering women to achieve their strongest, healthiest selves through personalized fitness programs, strength training, yoga, and dance fitness. Join our supportive community of women-focused wellness.",
   keywords: [
@@ -74,6 +75,7 @@ export const metadata = {
   manifest: "/manifest.json",
   other: {
     "og:updated_time": "2024-11-21T10:00:00+00:00",
+    "google-site-verification": "SDpn12dqUS4tZ-va1hxTAB41lVg1Y_HilcOGjP6uFes",
   },
 };
 
@@ -81,6 +83,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="SDpn12dqUS4tZ-va1hxTAB41lVg1Y_HilcOGjP6uFes" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
