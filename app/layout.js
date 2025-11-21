@@ -41,7 +41,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://glowfit-nextjs.vercel.app/",
+    url: "https://glowfit-nextjs.vercel.app",
     title: "GlowFit Women's Gym | Empowering Women's Fitness",
     description:
       "Empowering women to achieve their strongest, healthiest selves through personalized fitness programs, strength training, yoga, and dance fitness. Join our supportive community of women-focused wellness.",
@@ -73,7 +73,7 @@ export const metadata = {
   },
   manifest: "/manifest.json",
   other: {
-    "og:updated_time": "2025-11-21T10:00:00+00:00",
+    "og:updated_time": "2024-11-21T10:00:00+00:00",
   },
 };
 
@@ -89,7 +89,7 @@ export default function RootLayout({ children }) {
               "@type": "SportsActivityLocation",
               "name": "GlowFit Women's Gym",
               "description": "Empowering women to achieve their strongest, healthiest selves through personalized fitness programs.",
-              "url": "https://glowfit-nextjs.vercel.app/",
+              "url": "https://glowfit-nextjs.vercel.app",
               "telephone": "+91 7736219344",
               "address": {
                 "@type": "PostalAddress",

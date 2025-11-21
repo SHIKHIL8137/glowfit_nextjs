@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://glowfit-nextjs.vercel.app
+
+# Sitemaps
 Sitemap: https://glowfit-nextjs.vercel.app/sitemap.xml
